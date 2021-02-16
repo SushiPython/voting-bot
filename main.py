@@ -12,8 +12,14 @@ db = client.test
 db = client.voting.votes
 cands = client.voting.candidates
 
-admins = [614577566228938817, 428560505683050496, 294470646425976843]
+admins = []
 
+admin_roles = [role for role in ctx.guild.roles if role.permissions.administrator]
+
+for role in admin_roles:
+    for member in roles:
+        admins.append(member.id)
+        
 bot.remove_command('help')
 
 
